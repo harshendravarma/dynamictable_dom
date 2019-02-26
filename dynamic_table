@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p id="paragraph"></p>
+        <div id="divtable">
+           
+        </div>
+        
+    </body>
+</html>
+<script>
+    
+    
+    var array=[{"firstname":"harshendra","secondname":"varma","email":"harshendra.varma@gmail.com", "id":"1", "phoneNumber":"9996597255", "designation":"trainee", "DOB":"01/02/98"},
+    {"firstname":"rahul","secondname":"hulra","email":"rahul.hulra@gmail.com", "id":"2", "phoneNumber":"9996597253", "designation":"trainee", "DOB":"02/03/1998"},
+    {"firstname":"dev","secondname":"esh","email":"dev.esh@gmail.com", "id":"3", "phoneNumber":"9996597251", "designation":"trainee", "DOB":"03/04/1998"},]
+  
+    function idsort()
+   {    
+     array.sort(function(a, b){ return a.id-b.id });
+   }
+   idsort();
+    var object_keys=Object.keys(array[0]);
+//    console.log(object_keys);
+ 
+    var data_array;
+
+    data_array=array.map((element,index)=>{return Object.values(array[index])})
+  
+    var main_table=document.createElement('TABLE');
+    main_table.border=2;
+    var table_row1=document.createElement('tr');
+    
+    for(let i=0;i<object_keys.length;i++)
+    {
+     var table_head=document.createElement('th'); 
+     table_head.id="no"+i; 
+     table_head.class="buttn"
+     var head_data=document.createTextNode(object_keys[i]);
+     table_head.appendChild(head_data); 
+     table_row1.appendChild(table_head);
+    }
+
+   main_table.appendChild(table_row1);
+
+   for(var j=0;j<array.length;j++)
+   {
+    var table_row1=document.createElement('tr');   
+    for(let i=0;i<object_keys.length;i++)
+       {
+          //console.log(values[j][i]);
+     var table_head=document.createElement('td');  
+     var head_data=document.createTextNode(data_array[j][i]);
+     
+     table_head.appendChild(head_data); 
+     table_row1.appendChild(table_head);
+      }
+      main_table.appendChild(table_row1);
+   }
+
+
+   divtable.appendChild(main_table);
+
+   var first=document.getElementById("no3");
+  
+   first.onclick="func2()";
+  
+   var paragraph=document.getElementById("paragraph");
+   function func2(){
+       paragraph.textContent="changed";
+   }
+//   func2();
+
+
+
+
+</script>
